@@ -484,110 +484,142 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* English */}
-            <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Sliding Flag on Hover */}
-              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
-                <Image 
-                  src="/images/flags/uk.jpg" 
-                  alt="English flag background" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-15 grayscale"
-                />
-              </div>
+            <div className="relative rounded-[32px] overflow-hidden aspect-square transition-all duration-500 hover:shadow-xl group bg-[#0F1E43] border border-slate-100">
+              {/* Flag Background */}
+              <Image 
+                src="/images/flags/uk.jpg" 
+                alt="English" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-all duration-500 group-hover:scale-105 saturate-[35%] group-hover:saturate-100 contrast-[1.15] group-hover:contrast-100 brightness-[0.65] group-hover:brightness-90"
+              />
 
-              {/* Card Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full w-full">
-                <div>
-                  <span className="text-3xl filter drop-shadow-xs">🇬🇧</span>
-                  <h3 className="text-lg font-bold text-[#0F1E43] mt-4">English</h3>
-                  <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langEnglishDesc}</p>
+              {/* Glass Block */}
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl p-4 transition-all duration-500 ease-in-out z-20">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#BEF264] block">
+                  {language === "fr" ? "COURS DE LANGUE" : "LANGUAGE COURSE"}
+                </span>
+                <h3 className="text-lg font-extrabold text-white mt-0.5">English</h3>
+
+                {/* Collapsible Details */}
+                <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[220px] group-hover:opacity-100 group-hover:mt-3">
+                  <div className="border-t border-white/10 pt-2.5">
+                    <span className="text-[9px] text-[#BEF264]/90 font-bold uppercase tracking-wider block mb-1.5">
+                      {t.levelsOffered} : A1 - C2
+                    </span>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
+                      {t.langEnglishDesc}
+                    </p>
+                    <Link href="/langues/anglais" className="text-xs font-bold text-[#BEF264] hover:text-white transition-colors inline-flex items-center gap-1 mt-3">
+                      {t.langExplore} <ArrowRight className="size-3" />
+                    </Link>
+                  </div>
                 </div>
-                <Link href="/langues/anglais" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
-                  {t.langExplore} <ArrowRight className="size-3" />
-                </Link>
               </div>
             </div>
 
             {/* French */}
-            <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Sliding Flag on Hover */}
-              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
-                <Image 
-                  src="/images/flags/france.jpg" 
-                  alt="French flag background" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-15 grayscale"
-                />
-              </div>
+            <div className="relative rounded-[32px] overflow-hidden aspect-square transition-all duration-500 hover:shadow-xl group bg-[#0F1E43] border border-slate-100">
+              {/* Flag Background */}
+              <Image 
+                src="/images/flags/france.jpg" 
+                alt="Français" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-all duration-500 group-hover:scale-105 saturate-[35%] group-hover:saturate-100 contrast-[1.15] group-hover:contrast-100 brightness-[0.65] group-hover:brightness-90"
+              />
 
-              {/* Card Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full w-full">
-                <div>
-                  <span className="text-3xl filter drop-shadow-xs">🇫🇷</span>
-                  <h3 className="text-lg font-bold text-[#0F1E43] mt-4">Français</h3>
-                  <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langFrenchDesc}</p>
+              {/* Glass Block */}
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl p-4 transition-all duration-500 ease-in-out z-20">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#BEF264] block">
+                  {language === "fr" ? "COURS DE LANGUE" : "LANGUAGE COURSE"}
+                </span>
+                <h3 className="text-lg font-extrabold text-white mt-0.5">Français</h3>
+
+                {/* Collapsible Details */}
+                <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[220px] group-hover:opacity-100 group-hover:mt-3">
+                  <div className="border-t border-white/10 pt-2.5">
+                    <span className="text-[9px] text-[#BEF264]/90 font-bold uppercase tracking-wider block mb-1.5">
+                      {t.levelsOffered} : A1 - C2
+                    </span>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
+                      {t.langFrenchDesc}
+                    </p>
+                    <Link href="/langues/francais" className="text-xs font-bold text-[#BEF264] hover:text-white transition-colors inline-flex items-center gap-1 mt-3">
+                      {t.langExplore} <ArrowRight className="size-3" />
+                    </Link>
+                  </div>
                 </div>
-                <Link href="/langues/francais" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
-                  {t.langExplore} <ArrowRight className="size-3" />
-                </Link>
               </div>
             </div>
 
             {/* Spanish */}
-            <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Sliding Flag on Hover */}
-              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
-                <Image 
-                  src="/images/flags/spain.jpg" 
-                  alt="Spanish flag background" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-15 grayscale"
-                />
-              </div>
+            <div className="relative rounded-[32px] overflow-hidden aspect-square transition-all duration-500 hover:shadow-xl group bg-[#0F1E43] border border-slate-100">
+              {/* Flag Background */}
+              <Image 
+                src="/images/flags/spain.jpg" 
+                alt="Espagnol" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-all duration-500 group-hover:scale-105 saturate-[35%] group-hover:saturate-100 contrast-[1.15] group-hover:contrast-100 brightness-[0.65] group-hover:brightness-90"
+              />
 
-              {/* Card Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full w-full">
-                <div>
-                  <span className="text-3xl filter drop-shadow-xs">🇪🇸</span>
-                  <h3 className="text-lg font-bold text-[#0F1E43] mt-4">Espagnol</h3>
-                  <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langSpanishDesc}</p>
+              {/* Glass Block */}
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl p-4 transition-all duration-500 ease-in-out z-20">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#BEF264] block">
+                  {language === "fr" ? "COURS DE LANGUE" : "LANGUAGE COURSE"}
+                </span>
+                <h3 className="text-lg font-extrabold text-white mt-0.5">Espagnol</h3>
+
+                {/* Collapsible Details */}
+                <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[220px] group-hover:opacity-100 group-hover:mt-3">
+                  <div className="border-t border-white/10 pt-2.5">
+                    <span className="text-[9px] text-[#BEF264]/90 font-bold uppercase tracking-wider block mb-1.5">
+                      {t.levelsOffered} : A1 - C2
+                    </span>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
+                      {t.langSpanishDesc}
+                    </p>
+                    <Link href="/langues/espagnol" className="text-xs font-bold text-[#BEF264] hover:text-white transition-colors inline-flex items-center gap-1 mt-3">
+                      {t.langExplore} <ArrowRight className="size-3" />
+                    </Link>
+                  </div>
                 </div>
-                <Link href="/langues/espagnol" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
-                  {t.langExplore} <ArrowRight className="size-3" />
-                </Link>
               </div>
             </div>
 
             {/* Arabic */}
-            <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Sliding Flag on Hover */}
-              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
-                <Image 
-                  src="/images/flags/morocco.jpg" 
-                  alt="Moroccan flag background" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-15 grayscale"
-                />
-              </div>
+            <div className="relative rounded-[32px] overflow-hidden aspect-square transition-all duration-500 hover:shadow-xl group bg-[#0F1E43] border border-slate-100">
+              {/* Flag Background */}
+              <Image 
+                src="/images/flags/morocco.jpg" 
+                alt="Arabe" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-all duration-500 group-hover:scale-105 saturate-[35%] group-hover:saturate-100 contrast-[1.15] group-hover:contrast-100 brightness-[0.65] group-hover:brightness-90"
+              />
 
-              {/* Card Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full w-full">
-                <div>
-                  <span className="text-3xl filter drop-shadow-xs">🇲🇦</span>
-                  <h3 className="text-lg font-bold text-[#0F1E43] mt-4">Arabe</h3>
-                  <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langArabicDesc}</p>
+              {/* Glass Block */}
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-white/10 rounded-2xl p-4 transition-all duration-500 ease-in-out z-20">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#BEF264] block">
+                  {language === "fr" ? "COURS DE LANGUE" : "LANGUAGE COURSE"}
+                </span>
+                <h3 className="text-lg font-extrabold text-white mt-0.5">Arabe</h3>
+
+                {/* Collapsible Details */}
+                <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-[220px] group-hover:opacity-100 group-hover:mt-3">
+                  <div className="border-t border-white/10 pt-2.5">
+                    <span className="text-[9px] text-[#BEF264]/90 font-bold uppercase tracking-wider block mb-1.5">
+                      {t.levelsOffered} : A1 - C2
+                    </span>
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
+                      {t.langArabicDesc}
+                    </p>
+                    <Link href="/langues/arabe" className="text-xs font-bold text-[#BEF264] hover:text-white transition-colors inline-flex items-center gap-1 mt-3">
+                      {t.langExplore} <ArrowRight className="size-3" />
+                    </Link>
+                  </div>
                 </div>
-                <Link href="/langues/arabe" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
-                  {t.langExplore} <ArrowRight className="size-3" />
-                </Link>
               </div>
             </div>
           </div>
