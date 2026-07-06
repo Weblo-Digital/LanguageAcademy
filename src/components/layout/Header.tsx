@@ -84,7 +84,7 @@ export function Header() {
         <div className="flex-1 flex justify-start">
           <Link href="/" className="shrink-0 flex items-center">
             <Image 
-              src="/images/brand/next_point_academy.svg" 
+              src="/images/brand/next_point_academy_words.svg" 
               alt="Next Point Academy" 
               width={140} 
               height={40} 

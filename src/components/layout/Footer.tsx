@@ -15,16 +15,16 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         {/* 6-Column Grid Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 border-b border-white/10 pb-16">
-          
+
           {/* Col 1: Brand & Contact Info */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2 space-y-6">
             <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
               <Image 
                 src="/images/brand/next_point_academy.svg" 
                 alt="Next Point Academy" 
-                width={240} 
-                height={70} 
-                className="h-20 w-auto brightness-0 invert"
+                width={360} 
+                height={130} 
+                className="w-[360px] h-auto brightness-0 invert"
               />
             </Link>
             <p className="text-xs text-gray-300 leading-relaxed max-w-sm">
@@ -98,7 +98,7 @@ export function Footer() {
 
         {/* Bottom Section: Accreditations, Social Links, and Newsletter */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-10 items-center">
-          
+
           {/* Newsletter Box */}
           <div className="md:col-span-5 space-y-3">
             <h5 className="text-xs font-bold uppercase tracking-wider text-[#BEF264]">{t.newsletter}</h5>
@@ -106,9 +106,9 @@ export function Footer() {
               {t.newsletterDesc}
             </p>
             <form onSubmit={(e) => e.preventDefault()} className="flex gap-2 max-w-sm">
-              <input 
-                type="email" 
-                placeholder={t.newsletterPlaceholder} 
+              <input
+                type="email"
+                placeholder={t.newsletterPlaceholder}
                 required
                 className="bg-white/10 border border-white/15 rounded-xl px-4 py-2 text-xs text-white outline-none w-full placeholder-gray-400 focus:border-white/30"
               />
@@ -134,24 +134,24 @@ export function Footer() {
           <div className="md:col-span-3 flex items-center justify-start md:justify-end gap-3.5">
             <a href="https://facebook.com" className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors" aria-label="Facebook">
               <svg className="size-4.5 fill-current" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
               </svg>
             </a>
             <a href="https://linkedin.com" className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors" aria-label="LinkedIn">
               <svg className="size-4.5 fill-current" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
             </a>
             <a href="https://instagram.com" className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors" aria-label="Instagram">
               <svg className="size-4.5 stroke-current fill-none stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
             <a href="https://youtube.com" className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors" aria-label="YouTube">
               <svg className="size-4.5 fill-current" viewBox="0 0 24 24">
-                <path d="M23.498 6.163c-.272-1.015-1.072-1.815-2.087-2.087-1.84-.495-9.21-.495-9.21-.495s-7.37 0-9.21.495c-1.015.272-1.815 1.072-2.087 2.087-.495 1.842-.495 5.688-.495 5.688s0 3.847.495 5.687c.272 1.015 1.072 1.816 2.087 2.088 1.84.495 9.21.495 9.21.495s7.37 0 9.21-.495c1.015-.272 1.815-1.072 2.087-2.088.495-1.84.495-5.687.495-5.687s0-3.846-.495-5.688zm-13.918 8.877v-8.08l6.984 4.04-6.984 4.04z"/>
+                <path d="M23.498 6.163c-.272-1.015-1.072-1.815-2.087-2.087-1.84-.495-9.21-.495-9.21-.495s-7.37 0-9.21.495c-1.015.272-1.815 1.072-2.087 2.087-.495 1.842-.495 5.688-.495 5.688s0 3.847.495 5.687c.272 1.015 1.072 1.816 2.087 2.088 1.84.495 9.21.495 9.21.495s7.37 0 9.21-.495c1.015-.272 1.815-1.072 2.087-2.088.495-1.84.495-5.687.495-5.687s0-3.846-.495-5.688zm-13.918 8.877v-8.08l6.984 4.04-6.984 4.04z" />
               </svg>
             </a>
           </div>
