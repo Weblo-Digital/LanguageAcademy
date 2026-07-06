@@ -485,26 +485,24 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* English */}
             <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Background Image (Flag) */}
-              <div className="absolute inset-0 z-0">
+              {/* Sliding Flag on Hover */}
+              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
                 <Image 
                   src="/images/flags/uk.jpg" 
                   alt="English flag background" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-20 grayscale transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover opacity-15 grayscale"
                 />
-                {/* Overlay: from bottom-right 100% (solid white) to top-left 0% (transparent) */}
-                <div className="absolute inset-0 bg-gradient-to-tl from-white via-white/90 to-transparent z-10" />
               </div>
 
               {/* Card Content */}
-              <div className="relative z-20 flex flex-col justify-between h-full w-full">
+              <div className="relative z-10 flex flex-col justify-between h-full w-full">
                 <div>
                   <span className="text-3xl filter drop-shadow-xs">🇬🇧</span>
                   <h3 className="text-lg font-bold text-[#0F1E43] mt-4">English</h3>
                   <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-700 mt-3.5 leading-relaxed font-semibold">{t.langEnglishDesc}</p>
+                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langEnglishDesc}</p>
                 </div>
                 <Link href="/langues/anglais" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
                   {t.langExplore} <ArrowRight className="size-3" />
@@ -514,26 +512,24 @@ export default function HomePage() {
 
             {/* French */}
             <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Background Image (Flag) */}
-              <div className="absolute inset-0 z-0">
+              {/* Sliding Flag on Hover */}
+              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
                 <Image 
                   src="/images/flags/france.jpg" 
                   alt="French flag background" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-20 grayscale transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover opacity-15 grayscale"
                 />
-                {/* Overlay: from bottom-right 100% (solid white) to top-left 0% (transparent) */}
-                <div className="absolute inset-0 bg-gradient-to-tl from-white via-white/90 to-transparent z-10" />
               </div>
 
               {/* Card Content */}
-              <div className="relative z-20 flex flex-col justify-between h-full w-full">
+              <div className="relative z-10 flex flex-col justify-between h-full w-full">
                 <div>
                   <span className="text-3xl filter drop-shadow-xs">🇫🇷</span>
                   <h3 className="text-lg font-bold text-[#0F1E43] mt-4">Français</h3>
                   <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-700 mt-3.5 leading-relaxed font-semibold">{t.langFrenchDesc}</p>
+                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langFrenchDesc}</p>
                 </div>
                 <Link href="/langues/francais" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
                   {t.langExplore} <ArrowRight className="size-3" />
@@ -543,26 +539,24 @@ export default function HomePage() {
 
             {/* Spanish */}
             <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Background Image (Flag) */}
-              <div className="absolute inset-0 z-0">
+              {/* Sliding Flag on Hover */}
+              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
                 <Image 
                   src="/images/flags/spain.jpg" 
                   alt="Spanish flag background" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-20 grayscale transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover opacity-15 grayscale"
                 />
-                {/* Overlay: from bottom-right 100% (solid white) to top-left 0% (transparent) */}
-                <div className="absolute inset-0 bg-gradient-to-tl from-white via-white/90 to-transparent z-10" />
               </div>
 
               {/* Card Content */}
-              <div className="relative z-20 flex flex-col justify-between h-full w-full">
+              <div className="relative z-10 flex flex-col justify-between h-full w-full">
                 <div>
                   <span className="text-3xl filter drop-shadow-xs">🇪🇸</span>
                   <h3 className="text-lg font-bold text-[#0F1E43] mt-4">Espagnol</h3>
                   <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-700 mt-3.5 leading-relaxed font-semibold">{t.langSpanishDesc}</p>
+                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langSpanishDesc}</p>
                 </div>
                 <Link href="/langues/espagnol" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
                   {t.langExplore} <ArrowRight className="size-3" />
@@ -572,26 +566,24 @@ export default function HomePage() {
 
             {/* Arabic */}
             <div className="relative rounded-3xl border border-slate-100 overflow-hidden min-h-[320px] transition-all duration-300 hover:shadow-md group flex flex-col justify-between p-8 bg-white">
-              {/* Background Image (Flag) */}
-              <div className="absolute inset-0 z-0">
+              {/* Sliding Flag on Hover */}
+              <div className="absolute inset-0 z-0 transform -translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 pointer-events-none">
                 <Image 
                   src="/images/flags/morocco.jpg" 
                   alt="Moroccan flag background" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-20 grayscale transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover opacity-15 grayscale"
                 />
-                {/* Overlay: from bottom-right 100% (solid white) to top-left 0% (transparent) */}
-                <div className="absolute inset-0 bg-gradient-to-tl from-white via-white/90 to-transparent z-10" />
               </div>
 
               {/* Card Content */}
-              <div className="relative z-20 flex flex-col justify-between h-full w-full">
+              <div className="relative z-10 flex flex-col justify-between h-full w-full">
                 <div>
                   <span className="text-3xl filter drop-shadow-xs">🇲🇦</span>
                   <h3 className="text-lg font-bold text-[#0F1E43] mt-4">Arabe</h3>
                   <span className="text-[10px] text-slate-500 font-extrabold block mt-1">{t.levelsOffered}</span>
-                  <p className="text-xs text-slate-700 mt-3.5 leading-relaxed font-semibold">{t.langArabicDesc}</p>
+                  <p className="text-xs text-slate-600 mt-3.5 leading-relaxed font-semibold">{t.langArabicDesc}</p>
                 </div>
                 <Link href="/langues/arabe" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1 mt-6">
                   {t.langExplore} <ArrowRight className="size-3" />
