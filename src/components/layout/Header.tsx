@@ -83,12 +83,23 @@ export function Header() {
         {/* Left Side: Logo */}
         <div className="flex-1 flex justify-start">
           <Link href="/" className="shrink-0 flex items-center">
+            {/* Desktop Logo */}
             <Image 
               src="/images/brand/next_point_academy_words.svg" 
               alt="Next Point Academy" 
               width={140} 
               height={40} 
-              className={`h-9 w-auto transition-all duration-300 ${
+              className={`hidden md:block h-9 w-auto transition-all duration-300 ${
+                scrolled ? "" : "brightness-0 invert"
+              }`}
+            />
+            {/* Mobile Logo */}
+            <Image 
+              src="/images/brand/picto_next_point.svg" 
+              alt="Next Point Academy" 
+              width={36} 
+              height={36} 
+              className={`block md:hidden h-9 w-auto transition-all duration-300 ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
             />
