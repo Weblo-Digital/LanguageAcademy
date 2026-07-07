@@ -43,7 +43,7 @@ export default function HomePage() {
     <div className="bg-white min-h-screen text-slate-700 font-sans selection:bg-[#BEF264] selection:text-[#0F1E43]">
       
       {/* 1. Value-Driven Hero Section */}
-      <section className="relative w-full bg-[#0F1E43] h-screen min-h-[650px] flex flex-col justify-center items-center overflow-hidden border-b border-slate-800 pt-20">
+      <section className="relative w-full bg-[#0F1E43] h-screen min-h-[650px] flex flex-col justify-center overflow-hidden border-b border-slate-800 pt-20">
         {/* Hero Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -51,12 +51,14 @@ export default function HomePage() {
             alt="Classroom background"
             fill
             priority
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-45"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E43] via-[#0F1E43] via-40% to-transparent to-50%" />
+          {/* Double Gradients for perfect legibility and styling matching reference */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E43] via-[#0F1E43]/85 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F1E43] via-[#0F1E43]/80 to-transparent" />
         </div>
 
-        <div className="max-w-7xl w-full mx-auto px-6 lg:px-12 relative z-10 text-center">
+        <div className="max-w-7xl w-full mx-auto px-6 lg:px-12 relative z-10 text-left flex flex-col items-start">
           
           {/* Tagline / Trust Indicator */}
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/15 rounded-full px-4 py-2 text-xs font-bold text-white mb-8 shadow-3xs">
@@ -64,30 +66,36 @@ export default function HomePage() {
             <span>{t.heroBadge}</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-6 max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-6 max-w-4xl">
             {t.heroTitle1} <br />
             <span className="text-[#BEF264]">{t.heroTitle2}</span> <br />
             {t.heroTitle3}
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 font-semibold max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-base sm:text-lg text-slate-300 font-semibold max-w-2xl leading-relaxed mb-10">
             {t.heroSubhead}
           </p>
 
           {/* Primary & Secondary Actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-0 max-w-md mx-auto relative z-30">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 mb-0 relative z-30 w-full sm:w-auto">
             <Button
               onClick={openTestModal}
-              className="w-full sm:w-auto bg-[#BEF264] text-[#0F1E43] hover:bg-[#A3E635] border-none font-bold rounded-xl px-8 py-6 text-xs shadow-md transition-transform duration-200 hover:scale-[1.02] cursor-pointer"
+              className="w-full sm:w-auto bg-[#BEF264] text-[#0F1E43] hover:bg-[#A3E635] border-none font-extrabold rounded-full pl-6 pr-2.5 py-2.5 text-xs shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer flex items-center justify-between gap-3 shrink-0"
             >
-              {t.heroPrimaryCTA}
+              <span>{t.heroPrimaryCTA}</span>
+              <div className="size-8 rounded-full bg-[#0F1E43] text-white flex items-center justify-center shrink-0">
+                <ArrowUpRight className="size-4" />
+              </div>
             </Button>
             <Link href="#programs" className="w-full sm:w-auto">
               <Button
                 variant="outline"
-                className="w-full bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/30 font-bold rounded-xl px-8 py-6 text-xs transition-transform duration-200 hover:scale-[1.02] cursor-pointer"
+                className="w-full bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/30 font-extrabold rounded-full pl-6 pr-2.5 py-2.5 text-xs transition-all duration-200 hover:scale-[1.02] cursor-pointer flex items-center justify-between gap-3 shrink-0"
               >
-                {t.heroSecondaryCTA}
+                <span>{t.heroSecondaryCTA}</span>
+                <div className="size-8 rounded-full bg-white/10 text-white flex items-center justify-center shrink-0">
+                  <ArrowUpRight className="size-4" />
+                </div>
               </Button>
             </Link>
           </div>
