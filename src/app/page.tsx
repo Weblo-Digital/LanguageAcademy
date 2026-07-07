@@ -51,11 +51,10 @@ export default function HomePage() {
             alt="Classroom background"
             fill
             priority
-            className="object-cover object-center opacity-45"
+            className="object-cover object-center opacity-35"
           />
-          {/* Double Gradients for perfect legibility and styling matching reference */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E43] via-[#0F1E43]/85 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F1E43] via-[#0F1E43]/80 to-transparent" />
+          {/* Gradient covering only the lower part of the hero (bottom up to 50%) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E43] via-[#0F1E43] via-40% to-transparent to-50%" />
         </div>
 
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-12 relative z-10 text-left flex flex-col items-start">
@@ -80,20 +79,20 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 mb-0 relative z-30 w-full sm:w-auto">
             <Button
               onClick={openTestModal}
-              className="w-full sm:w-auto bg-[#BEF264] text-[#0F1E43] hover:bg-[#A3E635] border-none font-extrabold rounded-full pl-6 pr-2.5 py-2.5 text-xs shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer flex items-center justify-between gap-3 shrink-0"
+              className="w-full sm:w-auto h-12 bg-[#BEF264] text-[#0F1E43] hover:bg-[#A3E635] border-none font-extrabold rounded-full pl-6 pr-2 flex items-center justify-between gap-3 shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer"
             >
-              <span>{t.heroPrimaryCTA}</span>
-              <div className="size-8 rounded-full bg-[#0F1E43] text-white flex items-center justify-center shrink-0">
+              <span className="text-xs tracking-wide">{t.heroPrimaryCTA}</span>
+              <div className="size-8 rounded-full bg-[#0F1E43] text-[#BEF264] flex items-center justify-center shrink-0">
                 <ArrowUpRight className="size-4" />
               </div>
             </Button>
             <Link href="#programs" className="w-full sm:w-auto">
               <Button
                 variant="outline"
-                className="w-full bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/30 font-extrabold rounded-full pl-6 pr-2.5 py-2.5 text-xs transition-all duration-200 hover:scale-[1.02] cursor-pointer flex items-center justify-between gap-3 shrink-0"
+                className="w-full h-12 bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/30 font-extrabold rounded-full pl-6 pr-2 flex items-center justify-between gap-3 transition-all duration-200 hover:scale-[1.02] cursor-pointer"
               >
-                <span>{t.heroSecondaryCTA}</span>
-                <div className="size-8 rounded-full bg-white/10 text-white flex items-center justify-center shrink-0">
+                <span className="text-xs tracking-wide">{t.heroSecondaryCTA}</span>
+                <div className="size-8 rounded-full bg-white text-[#0F1E43] flex items-center justify-center shrink-0">
                   <ArrowUpRight className="size-4" />
                 </div>
               </Button>
