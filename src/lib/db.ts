@@ -22,7 +22,7 @@ function createPrismaClient() {
   });
 }
 
-export const db = globalForPrisma.prisma ?? createPrismaClient();
+export const db = (globalForPrisma.prisma ?? createPrismaClient()) as PrismaClient;
 
 if (isNode && process.env.NODE_ENV !== "production" && db) {
   globalForPrisma.prisma = db;
