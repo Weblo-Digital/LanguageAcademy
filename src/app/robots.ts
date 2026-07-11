@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/portal", "/admin"],
     },
-    sitemap: "https://nextpointacademy.com/sitemap.xml",
+    sitemap: "https://nextpoint.ma/sitemap.xml",
   };
 }

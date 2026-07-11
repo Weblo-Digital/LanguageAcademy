@@ -62,7 +62,7 @@ export function AgeProgramTabs() {
             </p>
             <div className="pt-4">
               <Button 
-                onClick={openTestModal} 
+                onClick={() => openTestModal()} 
                 className="bg-brand-lime text-brand-navy hover:bg-brand-lime-dark text-xs font-bold px-6 py-5 rounded-xl shadow-sm cursor-pointer border-none"
               >
                 {t.programsCTA}
@@ -75,7 +75,7 @@ export function AgeProgramTabs() {
             {ageProgramsData[selectedAge].courses.map((course, idx) => (
               <div 
                 key={idx} 
-                onClick={openTestModal}
+                onClick={() => openTestModal()}
                 className="group bg-white p-6 rounded-2xl border border-slate-100 flex flex-col justify-between hover:bg-brand-lime hover:border-brand-lime hover:shadow-md transition-all duration-300 cursor-pointer"
               >
                 <div>

@@ -1,33 +1,44 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Calendar, Layers, CheckCircle2 } from "lucide-react";
-import { programData } from "@/lib/data/programs";
+import { db } from "@/lib/db";
 import { PageHero } from "@/components/shared/PageHero";
 import { CTABanner } from "@/components/shared/CTABanner";
 import { LeadCaptureCard } from "@/components/shared/LeadCaptureCard";
 import { DownloadButton } from "@/components/client/DownloadButton";
 
-export function generateStaticParams() {
-  return Object.keys(programData).map((prog) => ({ prog }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ prog: string }> }): Promise<Metadata> {
   const { prog } = await params;
-  const program = programData[prog?.toLowerCase()];
+  const program = await db.program.findUnique({
+    where: { slug: prog?.toLowerCase() },
+    include: { translations: true }
+  });
+  
   if (!program) return { title: "Programme non trouvé | Next Point Academy" };
+  const translation = program.translations.find(t => t.locale === "fr") || program.translations[0];
+  
   return {
-    title: `${program.name} | Next Point Academy`,
-    description: program.subhead,
+    title: `${translation?.name || "Programme"} | Next Point Academy`,
+    description: translation?.subhead,
   };
 }
 
 export default async function Page({ params }: { params: Promise<{ prog: string }> }) {
   const { prog: progKey } = await params;
-  const prog = programData[progKey?.toLowerCase()];
+  const program = await db.program.findUnique({
+    where: { slug: progKey?.toLowerCase(), isActive: true },
+    include: { translations: true }
+  });
 
-  if (!prog) {
+  if (!program) {
     notFound();
   }
+
+  const translation = program.translations.find(t => t.locale === "fr") || program.translations[0];
+  const modules = (program.modules as unknown as string[]) || [];
+  const strategy = (program.strategy as unknown as string[]) || [];
 
   const breadcrumbs = [
     { label: "Accueil", href: "/" }
@@ -36,8 +47,8 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
   return (
     <div className="pb-24">
       <PageHero
-        title={prog.name}
-        subtitle={prog.subhead}
+        title={translation?.name || ""}
+        subtitle={translation?.subhead || ""}
         badgeText="Programme Académique"
         breadcrumbs={breadcrumbs}
       />
@@ -53,7 +64,7 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
             <div className="text-left space-y-4">
               <h3 className="text-xl font-black text-brand-navy tracking-tight">Présentation du Programme</h3>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                {prog.description}
+                {translation?.description}
               </p>
             </div>
 
@@ -66,15 +77,15 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-left">
                 <div className="space-y-1">
                   <p className="font-extrabold uppercase text-slate-400 tracking-wider">Durée &amp; Intensité</p>
-                  <p className="font-bold text-brand-navy text-sm">{prog.duration}</p>
+                  <p className="font-bold text-brand-navy text-sm">{program.duration}</p>
                 </div>
                 <div className="space-y-1">
                   <p className="font-extrabold uppercase text-slate-400 tracking-wider">Taille du Groupe</p>
-                  <p className="font-bold text-brand-navy text-sm">{prog.group}</p>
+                  <p className="font-bold text-brand-navy text-sm">{program.groupSize}</p>
                 </div>
                 <div className="space-y-1">
                   <p className="font-extrabold uppercase text-slate-400 tracking-wider">Niveau Admis</p>
-                  <p className="font-bold text-brand-navy text-sm leading-relaxed">{prog.level}</p>
+                  <p className="font-bold text-brand-navy text-sm leading-relaxed">{program.level}</p>
                 </div>
               </div>
             </div>
@@ -85,7 +96,7 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
                 <Layers className="size-5 text-[#057A55]" /> {"Programme d'Études / Syllabus"}
               </h3>
               <div className="grid grid-cols-1 gap-4">
-                {prog.modules.map((module, i) => (
+                {modules.map((module, i) => (
                   <div key={i} className="border border-slate-100 p-6 rounded-2xl flex items-center gap-4 bg-white shadow-3xs">
                     <span className="size-8 rounded-full bg-brand-navy/5 flex items-center justify-center text-xs font-bold text-brand-navy shrink-0">
                       {i + 1}
@@ -100,7 +111,7 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
             <div className="text-left space-y-6">
               <h3 className="text-xl font-black text-brand-navy tracking-tight">Notre Approche Pédagogique</h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {prog.strategy.map((item, i) => (
+                {strategy.map((item, i) => (
                   <li key={i} className="flex gap-3 bg-white p-5 border border-slate-100 rounded-2xl shadow-3xs text-left">
                     <div className="size-5 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shrink-0 mt-0.5">
                       <CheckCircle2 className="size-3.5 fill-current" />
@@ -123,7 +134,6 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
                 { name: "name", label: "Nom complet", type: "text", placeholder: "Ex: Youssef El Alami", required: true },
                 { name: "email", label: "Adresse email", type: "email", placeholder: "Ex: youssef@gmail.com", required: true }
               ]}
-              actionUrl="/api/contact"
               successContent={
                 <div className="bg-emerald-50 border border-emerald-200/50 rounded-2xl p-6 text-center space-y-4">
                   <DownloadButton label="Télécharger la Brochure (PDF)" />

@@ -1,0 +1,261 @@
+datasource db {
+  provider = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+}
+
+enum FormType {
+  CONTACT
+  LEVEL_TEST
+  NEWSLETTER
+  LEAD_CAPTURE
+}
+
+enum SubmissionStatus {
+  UNREAD
+  READ
+  REPLIED
+  ARCHIVED
+}
+
+// ─── Authentication (NextAuth.js v5 Standard Schema) ───
+
+model User {
+  id            String          @id @default(uuid())
+  name          String?
+  email         String?         @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?         // Added for credentials authentication
+  role          Role            @default(EDITOR)
+  isActive      Boolean         @default(true)
+  accounts      Account[]
+  sessions      Session[]
+  Authenticator Authenticator[]
+
+  // Custom User relationships
+  submissions   FormSubmission[] @relation("AssignedSubmissions")
+  mediaFiles    MediaFile[]
+  auditLogs     AuditLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
+}
+
+// ─── Custom Application Models ───
+
+model FormSubmission {
+  id           Int              @id @default(autoincrement())
+  formType     FormType
+  data         Json             // Stores fields as key-value JSON
+  sourcePage   String?
+  ipAddress    String?
+  status       SubmissionStatus @default(UNREAD)
+  assignedToId String?
+  assignedTo   User?            @relation("AssignedSubmissions", fields: [assignedToId], references: [id], onDelete: SetNull)
+  adminNotes   String?          @db.Text
+  createdAt    DateTime         @default(now())
+  readAt       DateTime?
+
+  @@index([formType])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model SiteSetting {
+  key         String   @id
+  value       Json
+  description String?  @db.Text
+  updatedAt   DateTime @updatedAt
+}
+
+model SeoMetadata {
+  id             Int      @id @default(autoincrement())
+  pagePath       String   @unique
+  titleFr        String?  @db.VarChar(255)
+  titleEn        String?  @db.VarChar(255)
+  descriptionFr  String?  @db.Text
+  descriptionEn  String?  @db.Text
+  ogImageUrl     String?  @db.Text
+  structuredData Json?    // Stores page-specific JSON-LD
+  noindex        Boolean  @default(false)
+  updatedAt      DateTime @updatedAt
+
+  @@index([pagePath])
+}
+
+model Program {
+  id           Int                  @id @default(autoincrement())
+  slug         String               @unique
+  duration     String               @db.VarChar(100)
+  groupSize    String               @db.VarChar(100)
+  level        String               @db.VarChar(100)
+  modules      Json                 // String array stored as JSON
+  strategy     Json                 // String array stored as JSON
+  sortOrder    Int                  @default(0)
+  isActive     Boolean              @default(true)
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  translations ProgramTranslation[]
+}
+
+model ProgramTranslation {
+  id          Int     @id @default(autoincrement())
+  programId   Int
+  locale      String  @db.VarChar(10)
+  name        String  @db.VarChar(255)
+  subhead     String  @db.VarChar(255)
+  description String  @db.Text
+  guideTitle  String? @db.VarChar(255)
+
+  program Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  @@unique([programId, locale])
+}
+
+model Exam {
+  id           Int               @id @default(autoincrement())
+  slug         String            @unique
+  languageCode String            @db.VarChar(10)
+  duration     String            @db.VarChar(100)
+  validity     String            @db.VarChar(100)
+  format       String            @db.VarChar(100)
+  sections     Json              // Structured sections object stored as JSON
+  strategy     Json              // String array stored as JSON
+  sortOrder    Int               @default(0)
+  isActive     Boolean           @default(true)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  translations ExamTranslation[]
+}
+
+model ExamTranslation {
+  id         Int     @id @default(autoincrement())
+  examId     Int
+  locale     String  @db.VarChar(10)
+  name       String  @db.VarChar(255)
+  fullName   String  @db.VarChar(255)
+  intro      String  @db.Text
+  guideTitle String? @db.VarChar(255)
+
+  exam Exam @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@unique([examId, locale])
+}
+
+model Language {
+  id           Int                   @id @default(autoincrement())
+  slug         String                @unique
+  code         String                @db.VarChar(10)
+  sortOrder    Int                   @default(0)
+  isActive     Boolean               @default(true)
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  translations LanguageTranslation[]
+}
+
+model LanguageTranslation {
+  id          Int      @id @default(autoincrement())
+  languageId  Int
+  locale      String   @db.VarChar(10)
+  name        String   @db.VarChar(255)
+  fullName    String   @db.VarChar(255)
+  description String   @db.Text
+  levels      Json?    // Optional CEFR levels configuration
+
+  language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@unique([languageId, locale])
+}
+
+model MediaFile {
+  id           Int      @id @default(autoincrement())
+  filename     String   @db.VarChar(255)
+  r2Key        String   @unique @db.VarChar(255)
+  publicUrl    String   @db.Text
+  mimeType     String   @db.VarChar(100)
+  sizeBytes    Int
+  altText      String?  @db.VarChar(255)
+  uploadedById String
+  createdAt    DateTime @default(now())
+
+  uploadedBy User @relation(fields: [uploadedById], references: [id])
+}
+
+model AuditLog {
+  id           Int      @id @default(autoincrement())
+  userId       String
+  action       String   @db.VarChar(100)
+  resource     String   @db.VarChar(100)
+  resourceId   String?  @db.VarChar(100)
+  oldValue     Json?
+  newValue     Json?
+  ipAddress    String?  @db.VarChar(45)
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

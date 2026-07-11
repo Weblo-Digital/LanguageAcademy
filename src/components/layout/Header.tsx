@@ -229,7 +229,7 @@ export function Header() {
             </Link>
             
             <Button
-              onClick={openTestModal}
+              onClick={() => openTestModal()}
               className="bg-brand-lime text-brand-navy hover:bg-brand-lime-dark border-none font-bold rounded-xl px-6 h-11 text-xs shadow-sm transition-transform duration-200 hover:scale-[1.02] cursor-pointer"
             >
               {t.freeTest}
@@ -241,7 +241,7 @@ export function Header() {
         <div className="flex lg:hidden items-center gap-3">
           {/* Main CTA on Mobile */}
           <Button
-            onClick={openTestModal}
+            onClick={() => openTestModal()}
             className="bg-brand-lime text-brand-navy hover:bg-brand-lime-dark border-none font-bold rounded-xl px-4 h-10 text-[11px] shadow-sm shrink-0"
           >
             {t.freeTest}
@@ -283,7 +283,7 @@ export function Header() {
                       {t.langHubDesc}
                     </p>
                   </div>
-                  <button onClick={openTestModal} className="mt-8 inline-flex items-center gap-2 text-xs font-bold text-brand-navy hover:text-[#0f1e43]/85 transition-colors cursor-pointer">
+                  <button onClick={() => openTestModal()} className="mt-8 inline-flex items-center gap-2 text-xs font-bold text-brand-navy hover:text-[#0f1e43]/85 transition-colors cursor-pointer">
                     {t.evalLevel} &rarr;
                   </button>
                 </div>
@@ -449,7 +449,7 @@ export function Header() {
                       {t.examsDesc}
                     </p>
                   </div>
-                  <button onClick={openTestModal} className="w-full bg-brand-lime text-brand-navy font-bold text-xs py-2.5 rounded-xl mt-4 hover:bg-brand-lime-dark transition-colors cursor-pointer">
+                  <button onClick={() => openTestModal()} className="w-full bg-brand-lime text-brand-navy font-bold text-xs py-2.5 rounded-xl mt-4 hover:bg-brand-lime-dark transition-colors cursor-pointer">
                     {t.simulateExam}
                   </button>
                 </div>

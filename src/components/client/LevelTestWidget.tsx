@@ -16,7 +16,7 @@ export function LevelTestWidget() {
 
   const handleWidgetSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    openTestModal();
+    openTestModal(widgetLang);
   };
 
   return (

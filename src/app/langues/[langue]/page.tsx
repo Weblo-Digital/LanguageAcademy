@@ -3,32 +3,52 @@ import { notFound } from "next/navigation";
 import { Clock, Award, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { languageData, levels } from "@/lib/data/languages";
+import { db } from "@/lib/db";
 import { PageHero } from "@/components/shared/PageHero";
 import { CTABanner } from "@/components/shared/CTABanner";
 import { TestModalTrigger } from "@/components/client/TestModalTrigger";
 
-export function generateStaticParams() {
-  return Object.keys(languageData).map((langue) => ({ langue }));
+interface LevelData {
+  code: string;
+  label: string;
+  title: string;
+  color: string;
+  desc: string;
+  items: string[];
+  btnText: string;
 }
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ langue: string }> }): Promise<Metadata> {
   const { langue } = await params;
-  const data = languageData[langue?.toLowerCase()];
-  if (!data) return { title: "Langue non trouvée | Next Point Academy" };
+  const language = await db.language.findUnique({
+    where: { slug: langue?.toLowerCase() },
+    include: { translations: true }
+  });
+  
+  if (!language) return { title: "Langue non trouvée | Next Point Academy" };
+  const translation = language.translations.find(t => t.locale === "fr") || language.translations[0];
+  
   return {
-    title: `Cours d'${data.name} | Next Point Academy`,
-    description: data.description,
+    title: `Cours d'${translation?.name || "Langue"} | Next Point Academy`,
+    description: translation?.description,
   };
 }
 
 export default async function Page({ params }: { params: Promise<{ langue: string }> }) {
-  const { langue } = await params;
-  const data = languageData[langue?.toLowerCase()];
+  const { langue: langKey } = await params;
+  const language = await db.language.findUnique({
+    where: { slug: langKey?.toLowerCase(), isActive: true },
+    include: { translations: true }
+  });
 
-  if (!data) {
+  if (!language) {
     notFound();
   }
+
+  const translation = language.translations.find(t => t.locale === "fr") || language.translations[0];
+  const levels = (translation?.levels as unknown as LevelData[]) || [];
 
   const breadcrumbs = [
     { label: "Accueil", href: "/" }
@@ -37,9 +57,9 @@ export default async function Page({ params }: { params: Promise<{ langue: strin
   return (
     <div className="pb-24">
       <PageHero
-        title={data.fullName}
-        subtitle={data.description}
-        badgeText={data.code}
+        title={translation?.fullName || ""}
+        subtitle={translation?.description || ""}
+        badgeText={language.code}
         breadcrumbs={breadcrumbs}
       />
 
@@ -93,7 +113,7 @@ export default async function Page({ params }: { params: Promise<{ langue: strin
                 </CardContent>
 
                 <div className="mt-8 pt-5 border-t border-slate-900/10">
-                  <TestModalTrigger className="w-full">
+                  <TestModalTrigger className="w-full" initialLanguage={langKey}>
                     <Button 
                       className="w-full bg-slate-900 text-white hover:bg-slate-800 rounded-full font-bold text-xs py-5 cursor-pointer border-none"
                     >
@@ -124,7 +144,7 @@ export default async function Page({ params }: { params: Promise<{ langue: strin
 
         {/* Final CTA Banner Card */}
         <CTABanner
-          title={`Prêt à commencer vos cours de ${data.name} ?`}
+          title={`Prêt à commencer vos cours de ${translation?.name || ""} ?`}
           description="Rejoignez notre programme de formation active et développez la maîtrise nécessaire pour réaliser vos projets professionnels et académiques."
           buttonText="Réserver votre orientation gratuite"
           variant="navy"

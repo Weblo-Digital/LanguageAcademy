@@ -43,7 +43,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="size-4.5 text-brand-lime shrink-0" />
-                <span>contact@nextpointacademy.com</span>
+                <span>contact@nextpoint.ma</span>
               </div>
             </div>
           </div>

@@ -13,10 +13,15 @@ import { Button } from "@/components/ui/button";
 import { formulas } from "@/lib/data/summer-camp";
 import { TestModalTrigger } from "@/components/client/TestModalTrigger";
 
-export const metadata: Metadata = {
-  title: "Camps d'Été Linguistiques | Next Point Academy",
-  description: "Summer Smart Camp pour enfants et adolescents. Immersion linguistique avec activités pédagogiques et ludiques pendant les vacances d'été.",
-};
+import { getPageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const defaults = {
+    title: "Camps d'Été Linguistiques | Next Point Academy",
+    description: "Summer Smart Camp pour enfants et adolescents. Immersion linguistique avec activités pédagogiques et ludiques pendant les vacances d'été.",
+  };
+  return getPageMetadata("/camps-ete", defaults);
+}
 
 export default function SummerCampsPage() {
   return (

@@ -4,10 +4,15 @@ import { PageHero } from "@/components/shared/PageHero";
 import { LeadCaptureCard } from "@/components/shared/LeadCaptureCard";
 import { Translated } from "@/components/client/Translated";
 
-export const metadata: Metadata = {
-  title: "Contactez-nous | Next Point Academy",
-  description: "Contactez Next Point Academy pour toute question, inscription ou réservation de test de niveau.",
-};
+import { getPageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const defaults = {
+    title: "Contactez-nous | Next Point Academy",
+    description: "Contactez Next Point Academy pour toute question, inscription ou réservation de test de niveau.",
+  };
+  return getPageMetadata("/contact", defaults);
+}
 
 export default function ContactPage() {
   const breadcrumbs = [

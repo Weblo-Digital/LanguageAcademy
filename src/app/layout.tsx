@@ -7,13 +7,15 @@ import { LevelTestProvider } from "@/context/LevelTestContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { LevelTestModal } from "@/components/client/LevelTestModal";
 
+import { generateOrganizationSchema, generateLocalBusinessSchema } from "@/lib/seo/structured-data";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nextpointacademy.com"),
+  metadataBase: new URL("https://nextpoint.ma"),
   title: {
     default: "Next Point Academy | Cours de langues premium",
     template: "%s | Next Point Academy",
@@ -35,9 +37,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const orgSchema = generateOrganizationSchema();
+  const localBusinessSchema = generateLocalBusinessSchema();
+
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        
         <LanguageProvider>
           <LevelTestProvider>
             <Header />

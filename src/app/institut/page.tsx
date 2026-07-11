@@ -4,10 +4,15 @@ import { Translated } from "@/components/client/Translated";
 import { PageHero } from "@/components/shared/PageHero";
 import { institutTranslations } from "@/lib/translations/institut";
 
-export const metadata: Metadata = {
-  title: "L'Institut | Next Point Academy",
-  description: "Découvrez notre histoire, nos accréditations et notre mission d'excellence en enseignement linguistique active.",
-};
+import { getPageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const defaults = {
+    title: "L'Institut | Next Point Academy",
+    description: "Découvrez notre histoire, nos accréditations et notre mission d'excellence en enseignement linguistique active.",
+  };
+  return getPageMetadata("/institut", defaults);
+}
 
 export default function InstitutPage() {
   const fr = institutTranslations.fr;

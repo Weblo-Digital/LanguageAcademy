@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, User, Mail, Phone, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { submitLeadCapture } from "@/lib/actions/forms";
 
 interface Field {
   name: string;
@@ -19,7 +20,7 @@ interface LeadCaptureCardProps {
   description: React.ReactNode;
   fields: Field[];
   submitLabel: React.ReactNode;
-  actionUrl?: string;
+  actionUrl?: string; // Kept for backwards compatibility
   onSubmit?: (data: Record<string, string>) => void;
   successContent?: React.ReactNode;
 }
@@ -29,41 +30,26 @@ export function LeadCaptureCard({
   description,
   fields,
   submitLabel,
-  actionUrl,
   onSubmit,
   successContent,
 }: LeadCaptureCardProps) {
   const { language } = useLanguage();
   const [values, setValues] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState(submitLeadCapture, null);
 
   const handleFieldChange = (name: string, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (actionUrl) {
-      try {
-        const res = await fetch(actionUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        });
-        const data = await res.json();
-        console.log("Mock lead capture submission success:", data);
-      } catch (err) {
-        console.error("Mock lead capture submission error:", err);
+  useEffect(() => {
+    if (state?.success) {
+      setSubmitted(true);
+      if (onSubmit) {
+        onSubmit(values);
       }
     }
-
-    if (onSubmit) {
-      onSubmit(values);
-    }
-    
-    setSubmitted(true);
-  };
+  }, [state, onSubmit, values]);
 
   // Helper to render label icons
   const getIcon = (fieldName: string) => {
@@ -83,7 +69,13 @@ export function LeadCaptureCard({
       </div>
 
       {!submitted ? (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form action={formAction} className="space-y-4">
+          <input 
+            type="hidden" 
+            name="sourcePage" 
+            value={typeof window !== "undefined" ? window.location.pathname : ""} 
+          />
+          
           <div className="space-y-3">
             {fields.map((field) => (
               <div key={field.name} className="flex flex-col space-y-1.5">
@@ -97,6 +89,7 @@ export function LeadCaptureCard({
                 {field.type === "textarea" ? (
                   <textarea
                     id={`lead-${field.name}`}
+                    name={field.name}
                     value={values[field.name] || ""}
                     onChange={(e) => handleFieldChange(field.name, e.target.value)}
                     required={field.required}
@@ -107,6 +100,7 @@ export function LeadCaptureCard({
                 ) : (
                   <input
                     id={`lead-${field.name}`}
+                    name={field.name}
                     type={field.type}
                     value={values[field.name] || ""}
                     onChange={(e) => handleFieldChange(field.name, e.target.value)}
@@ -115,15 +109,28 @@ export function LeadCaptureCard({
                     className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-brand-navy font-bold outline-none cursor-text focus:border-brand-emerald w-full"
                   />
                 )}
+
+                {((state?.errors as Record<string, string[] | undefined>)?.[field.name]) && (
+                  <span className="text-[10px] text-red-500 font-bold mt-1">
+                    {(state?.errors as Record<string, string[] | undefined>)?.[field.name]?.[0]}
+                  </span>
+                )}
               </div>
             ))}
           </div>
 
+          {state?.error && (
+            <div className="bg-red-50 text-red-600 text-[10px] font-bold px-3 py-2 rounded-xl border border-red-100">
+              {state.error}
+            </div>
+          )}
+
           <Button
             type="submit"
+            disabled={pending}
             className="w-full bg-brand-lime text-brand-navy hover:bg-brand-lime-dark border-none font-bold rounded-xl py-6 text-xs transition-colors duration-200 cursor-pointer shadow-md mt-2 flex items-center justify-center gap-2"
           >
-            <Download className="size-4" /> {submitLabel}
+            <Download className="size-4" /> {pending ? "Envoi..." : submitLabel}
           </Button>
         </form>
       ) : (
@@ -134,7 +141,7 @@ export function LeadCaptureCard({
             </div>
             <h4 className="text-sm font-black text-emerald-950">Succès !</h4>
             <p className="text-[11px] text-emerald-800 leading-relaxed">
-              Vos informations ont été soumises avec succès.
+              {state?.message || "Vos informations ont été soumises avec succès."}
             </p>
           </div>
         )

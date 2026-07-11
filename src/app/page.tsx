@@ -24,26 +24,31 @@ import { Translated } from "@/components/client/Translated";
 import { homeTranslations } from "@/lib/translations/home";
 import { galleryColumn1, galleryColumn2, galleryColumn3 } from "@/lib/data/homepage";
 
-export const metadata: Metadata = {
-  title: "Next Point Academy | Cours de langues premium à Casablanca",
-  description: "Programmes d'excellence en langues étrangères et préparation aux examens internationaux. Anglais, Français, Espagnol, Arabe. Habilité par le CECRL.",
-  openGraph: {
-    title: "Next Point Academy | Cours de langues premium",
-    description: "Programmes d'excellence en langues étrangères et préparation aux examens internationaux.",
-    images: ["/images/hero-student.jpg"],
-    locale: "fr_MA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Next Point Academy | Cours de langues premium",
-    description: "Programmes d'excellence en langues étrangères et préparation aux examens internationaux.",
-    images: ["/images/hero-student.jpg"],
-  },
-  alternates: {
-    canonical: "https://nextpointacademy.com",
-  },
-};
+import { getPageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const defaults = {
+    title: "Next Point Academy | Cours de langues premium à Casablanca",
+    description: "Programmes d'excellence en langues étrangères et préparation aux examens internationaux. Anglais, Français, Espagnol, Arabe. Habilité par le CECRL.",
+    openGraph: {
+      title: "Next Point Academy | Cours de langues premium",
+      description: "Programmes d'excellence en langues étrangères et préparation aux examens internationaux.",
+      images: ["/images/hero-student.jpg"],
+      locale: "fr_MA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Next Point Academy | Cours de langues premium",
+      description: "Programmes d'excellence en langues étrangères et préparation aux examens internationaux.",
+      images: ["/images/hero-student.jpg"],
+    },
+    alternates: {
+      canonical: "https://nextpoint.ma",
+    },
+  };
+  return getPageMetadata("/", defaults);
+}
 
 export default function HomePage() {
   const fr = homeTranslations.fr;
@@ -544,7 +549,7 @@ export default function HomePage() {
                   <div>
                     <p className="font-bold text-brand-navy">Email</p>
                     <p className="text-slate-500 mt-0.5">
-                      <a href="mailto:contact@nextpointacademy.com" className="hover:underline text-slate-500">contact@nextpointacademy.com</a>
+                      <a href="mailto:contact@nextpoint.ma" className="hover:underline text-slate-500">contact@nextpoint.ma</a>
                     </p>
                   </div>
                 </div>

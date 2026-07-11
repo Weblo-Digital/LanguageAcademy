@@ -90,10 +90,15 @@ const slugMap: Record<string, string> = {
   "DELE": "dele"
 };
 
-export const metadata: Metadata = {
-  title: "Préparation aux Examens Internationaux | Next Point Academy",
-  description: "Préparation IELTS, TOEFL, Cambridge, DELF, DALF, DELE, TEF. Taux de réussite exceptionnel et coaching personnalisé.",
-};
+import { getPageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const defaults = {
+    title: "Préparation aux Examens Internationaux | Next Point Academy",
+    description: "Préparation IELTS, TOEFL, Cambridge, DELF, DALF, DELE, TEF. Taux de réussite exceptionnel et coaching personnalisé.",
+  };
+  return getPageMetadata("/examens", defaults);
+}
 
 function ExamCard({ exam }: { exam: ExamInfo }) {
   const slug = slugMap[exam.name] || "";

@@ -2,7 +2,15 @@
 import React from "react";
 import { useLevelTest } from "@/context/LevelTestContext";
 
-export function TestModalTrigger({ children, className }: { children: React.ReactNode; className?: string }) {
+export function TestModalTrigger({
+  children,
+  className,
+  initialLanguage,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  initialLanguage?: string;
+}) {
   const { openTestModal } = useLevelTest();
 
   if (React.isValidElement(children)) {
@@ -12,14 +20,14 @@ export function TestModalTrigger({ children, className }: { children: React.Reac
         if (child.props.onClick) {
           child.props.onClick(e);
         }
-        openTestModal();
+        openTestModal(initialLanguage);
       },
       className: className ? `${className} ${child.props.className || ""}` : child.props.className
     });
   }
 
   return (
-    <button onClick={openTestModal} className={className}>
+    <button onClick={() => openTestModal(initialLanguage)} className={className}>
       {children}
     </button>
   );
