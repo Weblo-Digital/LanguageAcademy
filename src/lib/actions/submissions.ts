@@ -2,15 +2,14 @@
 
 import { db } from "@/lib/db";
 import { requirePermission } from "@/lib/auth/dal";
-import { SubmissionStatus } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-export async function updateSubmissionStatus(id: number, status: SubmissionStatus) {
+export async function updateSubmissionStatus(id: number, status: string) {
   await requirePermission("submissions.edit" as any);
 
   try {
     const data: Record<string, any> = { status };
-    if (status === SubmissionStatus.READ) {
+    if (status === "READ") {
       data.readAt = new Date();
     }
 

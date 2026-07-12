@@ -2,7 +2,6 @@
 
 import { db } from "@/lib/db";
 import { requirePermission } from "@/lib/auth/dal";
-import { Role } from "@prisma/client";
 import * as bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 
@@ -12,7 +11,7 @@ export async function createAdminUser(prevState: any, formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
-  const role = formData.get("role") as Role;
+  const role = formData.get("role") as string;
 
   if (!name || !email || !password || !role) {
     return { success: false, error: "Veuillez remplir tous les champs." };
@@ -70,12 +69,12 @@ export async function deleteUser(id: string) {
   try {
     // Check that we aren't deleting the last super admin
     const superAdminsCount = await db.user.count({
-      where: { role: Role.SUPER_ADMIN, isActive: true },
+      where: { role: "SUPER_ADMIN", isActive: true },
     });
 
     const targetUser = await db.user.findUnique({ where: { id } });
     
-    if (targetUser?.role === Role.SUPER_ADMIN && superAdminsCount <= 1) {
+    if (targetUser?.role === "SUPER_ADMIN" && superAdminsCount <= 1) {
       return { success: false, error: "Impossible de supprimer le dernier Super Administrateur actif." };
     }
 

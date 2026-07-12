@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { SubmissionStatus } from "@prisma/client";
+
 import { verifySession } from "@/lib/auth/dal";
 import Link from "next/link";
 import { 
@@ -140,13 +140,13 @@ export default async function AdminDashboardPage() {
                   </div>
 
                   <span className={`inline-block px-2.5 py-0.5 rounded-full text-[8px] font-extrabold uppercase tracking-widest border ${
-                    sub.status === SubmissionStatus.UNREAD
+                    sub.status === "UNREAD"
                       ? "bg-amber-50 text-amber-700 border-amber-100"
-                      : sub.status === SubmissionStatus.REPLIED
+                      : sub.status === "REPLIED"
                       ? "bg-blue-50 text-blue-700 border-blue-100"
                       : "bg-emerald-50 text-emerald-700 border-emerald-100"
                   }`}>
-                    {sub.status === SubmissionStatus.UNREAD ? "Nouveau" : sub.status === SubmissionStatus.REPLIED ? "Répondu" : sub.status === SubmissionStatus.READ ? "Lu" : "Archivé"}
+                    {sub.status === "UNREAD" ? "Nouveau" : sub.status === "REPLIED" ? "Répondu" : sub.status === "READ" ? "Lu" : "Archivé"}
                   </span>
                 </div>
               );

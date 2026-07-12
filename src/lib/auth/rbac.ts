@@ -1,6 +1,6 @@
-import { Role } from "@prisma/client";
-
 export const ROLES = ["SUPER_ADMIN", "ADMIN", "EDITOR"] as const;
+
+export type Role = (typeof ROLES)[number];
 
 export const PERMISSIONS = {
   // User Management
@@ -13,6 +13,7 @@ export const PERMISSIONS = {
   "submissions.list":    ["SUPER_ADMIN", "ADMIN"],
   "submissions.read":    ["SUPER_ADMIN", "ADMIN"],
   "submissions.export":  ["SUPER_ADMIN", "ADMIN"],
+  "submissions.edit":    ["SUPER_ADMIN", "ADMIN"],
   "submissions.delete":  ["SUPER_ADMIN"],
 
   // Content Management
@@ -39,7 +40,7 @@ export const PERMISSIONS = {
 
 export type Permission = keyof typeof PERMISSIONS;
 
-export function hasPermission(role: Role, permission: Permission): boolean {
-  const allowedRoles = PERMISSIONS[permission] as readonly Role[];
+export function hasPermission(role: string, permission: Permission): boolean {
+  const allowedRoles = PERMISSIONS[permission] as readonly string[];
   return allowedRoles ? allowedRoles.includes(role) : false;
 }
