@@ -110,7 +110,7 @@ export function SubmissionsManager({ initialSubmissions, userRole }: Submissions
       const res = await updateSubmissionStatus(id, status);
       if (res.success) {
         setSubmissions((prev) =>
-          prev.map((sub: any) =>
+          prev.map((sub) =>
             sub.id === id ? { ...sub, status, readAt: status === SubmissionStatus.READ ? new Date() : sub.readAt } : sub
           )
         );
@@ -126,7 +126,7 @@ export function SubmissionsManager({ initialSubmissions, userRole }: Submissions
       const res = await updateSubmissionNotes(id, notesText);
       if (res.success) {
         setSubmissions((prev) =>
-          prev.map((sub: any) =>
+          prev.map((sub) =>
             sub.id === id ? { ...sub, adminNotes: notesText } : sub
           )
         );
@@ -222,7 +222,7 @@ export function SubmissionsManager({ initialSubmissions, userRole }: Submissions
                 Aucune soumission trouvée
               </div>
             ) : (
-              filtered.map((sub: any) => {
+              filtered.map((sub: Submission) => {
                 const subDate = new Date(sub.createdAt).toLocaleDateString("fr-FR", {
                   day: "numeric",
                   month: "short",
