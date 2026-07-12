@@ -33,7 +33,7 @@ export async function createAdminUser(prevState: any, formData: FormData) {
         name,
         email,
         passwordHash,
-        role,
+        role: role as any,
         isActive: true,
       },
     });

@@ -52,7 +52,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
   try {
     const submission = await db.formSubmission.create({
       data: {
-        formType: "CONTACT",
+        formType: "CONTACT" as any,
         data: { name, email, phone, message },
         sourcePage: sourcePage || "/contact",
       },
@@ -95,7 +95,7 @@ export async function submitLeadCapture(prevState: any, formData: FormData) {
     
     await db.formSubmission.create({
       data: {
-        formType: isFullContact ? "CONTACT" : "LEAD_CAPTURE",
+        formType: (isFullContact ? "CONTACT" : "LEAD_CAPTURE") as any,
         data: { name, email, phone, message },
         sourcePage: sourcePage || "/programmes",
       },
@@ -136,7 +136,7 @@ export async function submitLevelTest(prevState: any, formData: FormData) {
   try {
     await db.formSubmission.create({
       data: {
-        formType: "LEVEL_TEST",
+        formType: "LEVEL_TEST" as any,
         data: { name, email, phone, language },
         sourcePage: sourcePage || "/eval-level",
       },
@@ -177,7 +177,7 @@ export async function submitNewsletter(prevState: any, formData: FormData) {
   try {
     await db.formSubmission.create({
       data: {
-        formType: "NEWSLETTER",
+        formType: "NEWSLETTER" as any,
         data: { email },
         sourcePage: sourcePage || "/",
       },
