@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { db as prisma } from "../src/lib/db";
 import * as bcrypt from "bcryptjs";
 import { programData } from "../src/lib/data/programs";
 import { examData } from "../src/lib/data/exams";
 import { languageData, levels } from "../src/lib/data/languages";
-
-const prisma = new PrismaClient();
 
 async function main() {
   console.log("Seeding started...");
