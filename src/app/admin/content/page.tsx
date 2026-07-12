@@ -52,8 +52,8 @@ export default async function AdminContentPage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden divide-y divide-slate-100">
-            {programs.map((program) => {
-              const translation = program.translations.find(t => t.locale === "fr") || program.translations[0];
+            {programs.map((program: any) => {
+              const translation = program.translations.find((t: any) => t.locale === "fr") || program.translations[0];
               return (
                 <div key={program.id} className="p-4 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
                   <div className="space-y-1 min-w-0 flex-1">
@@ -111,8 +111,8 @@ export default async function AdminContentPage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden divide-y divide-slate-100">
-            {exams.map((exam) => {
-              const translation = exam.translations.find(t => t.locale === "fr") || exam.translations[0];
+            {exams.map((exam: any) => {
+              const translation = exam.translations.find((t: any) => t.locale === "fr") || exam.translations[0];
               return (
                 <div key={exam.id} className="p-4 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
                   <div className="space-y-1 min-w-0 flex-1">

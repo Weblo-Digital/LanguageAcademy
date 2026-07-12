@@ -121,7 +121,7 @@ export default async function AdminDashboardPage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-100 shadow-3xs overflow-hidden divide-y divide-slate-100">
-            {recentSubmissions.map((sub) => {
+            {recentSubmissions.map((sub: any) => {
               const data = sub.data as any;
               return (
                 <div key={sub.id} className="p-4 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
