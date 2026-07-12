@@ -156,7 +156,7 @@ export default function ExamensPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {englishExams.map((exam) => (
+            {englishExams.map((exam: any) => (
               <ExamCard key={exam.name} exam={exam} />
             ))}
           </div>
@@ -171,7 +171,7 @@ export default function ExamensPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {frenchExams.map((exam) => (
+            {frenchExams.map((exam: any) => (
               <ExamCard key={exam.name} exam={exam} />
             ))}
           </div>
@@ -186,7 +186,7 @@ export default function ExamensPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {spanishExams.map((exam) => (
+            {spanishExams.map((exam: any) => (
               <ExamCard key={exam.name} exam={exam} />
             ))}
           </div>

@@ -136,7 +136,7 @@ export function SeoManager({ initialSeo }: SeoManagerProps) {
           <h3 className="text-xs font-black text-brand-navy uppercase tracking-wider px-3 mb-3">
             Pages Principales
           </h3>
-          {defaultPages.map((page) => {
+          {defaultPages.map((page: any) => {
             const isActive = selectedPath === page.path;
             const hasOverridden = seoRecords.some(r => r.pagePath === page.path && (r.titleFr || r.descriptionFr));
             return (

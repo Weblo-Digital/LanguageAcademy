@@ -168,7 +168,7 @@ export function MediaManager({ initialFiles, userRole }: MediaManagerProps) {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {files.map((file) => {
+              {files.map((file: any) => {
                 const isImg = file.mimeType.startsWith("image/");
                 return (
                   <Card key={file.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex flex-col justify-between group relative">

@@ -127,7 +127,7 @@ export function UsersManager({ users, currentUserId }: UsersManagerProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-xs font-bold text-slate-600">
-                {users.map((user) => (
+                {users.map((user: any) => (
                   <tr key={user.id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="p-4 space-y-0.5">
                       <p className="text-brand-navy font-bold">{user.name || "Sans nom"}</p>

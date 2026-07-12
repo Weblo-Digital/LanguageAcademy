@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { isActive: true },
       select: { slug: true }
     });
-    const examRoutes = exams.map((exam) => ({
+    const examRoutes = exams.map((exam: any) => ({
       url: `${baseUrl}/examens/${exam.slug}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { isActive: true },
       select: { slug: true }
     });
-    const languageRoutes = languages.map((lang) => ({
+    const languageRoutes = languages.map((lang: any) => ({
       url: `${baseUrl}/langues/${lang.slug}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { isActive: true },
       select: { slug: true }
     });
-    const programRoutes = programs.map((prog) => ({
+    const programRoutes = programs.map((prog: any) => ({
       url: `${baseUrl}/programmes/${prog.slug}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
