@@ -25,7 +25,7 @@ export async function saveSiteSettings(input: SettingsInput) {
 
   try {
     // Perform updates in database transaction
-    await db.$transaction(async (tx) => {
+    await db.$transaction(async (tx: any) => {
       const settingsMap = Object.entries(input);
 
       for (const [key, val] of settingsMap) {
