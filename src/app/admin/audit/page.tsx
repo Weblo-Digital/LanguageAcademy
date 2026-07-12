@@ -55,7 +55,7 @@ export default async function AdminAuditLogsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 text-xs font-bold text-slate-600">
-            {logs.map((log) => (
+            {logs.map((log: any) => (
               <tr key={log.id} className="hover:bg-slate-50/50 transition-colors">
                 <td className="p-4 flex items-center gap-2">
                   <div className="size-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 shrink-0">

@@ -14,7 +14,9 @@ function createPrismaClient() {
     return new PrismaClient() as any; // Fallback during compilation if URL is missing
   }
 
-  const adapter = new PrismaMariaDb(connectionString);
+  // MariaDB driver requires mariadb:// protocol in connection string
+  const mariadbConnectionString = connectionString.replace(/^mysql:/, "mariadb:");
+  const adapter = new PrismaMariaDb(mariadbConnectionString);
 
   return new PrismaClient({
     adapter,
