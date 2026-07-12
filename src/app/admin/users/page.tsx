@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminUsersPage() {
   // Only SUPER_ADMIN users can access administrative role mappings
-  await requirePermission("users.view" as any);
+  await requirePermission("users.list");
   
   const session = await verifySession();
 
