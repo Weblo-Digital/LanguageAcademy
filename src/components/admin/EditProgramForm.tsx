@@ -45,14 +45,14 @@ export function EditProgramForm({ program }: EditProgramFormProps) {
   const [strategy, setStrategy] = useState<string[]>(program.strategy as string[] || []);
 
   // French Translations
-  const frTrans = program.translations.find(t => t.locale === "fr") || { name: "", subhead: "", description: "", guideTitle: "" };
+  const frTrans = program.translations.find((t: any) => t.locale === "fr") || { name: "", subhead: "", description: "", guideTitle: "" };
   const [frName, setFrName] = useState(frTrans.name);
   const [frSubhead, setFrSubhead] = useState(frTrans.subhead);
   const [frDescription, setFrDescription] = useState(frTrans.description);
   const [frGuide, setFrGuide] = useState(frTrans.guideTitle || "");
 
   // English Translations
-  const enTrans = program.translations.find(t => t.locale === "en") || { name: "", subhead: "", description: "", guideTitle: "" };
+  const enTrans = program.translations.find((t: any) => t.locale === "en") || { name: "", subhead: "", description: "", guideTitle: "" };
   const [enName, setEnName] = useState(enTrans.name);
   const [enSubhead, setEnSubhead] = useState(enTrans.subhead);
   const [enDescription, setEnDescription] = useState(enTrans.description);

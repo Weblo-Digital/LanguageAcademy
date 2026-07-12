@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ langue: s
   });
   
   if (!language) return { title: "Langue non trouvée | Next Point Academy" };
-  const translation = language.translations.find(t => t.locale === "fr") || language.translations[0];
+  const translation = language.translations.find((t: any) => t.locale === "fr") || language.translations[0];
   
   return {
     title: `Cours d'${translation?.name || "Langue"} | Next Point Academy`,
@@ -47,7 +47,7 @@ export default async function Page({ params }: { params: Promise<{ langue: strin
     notFound();
   }
 
-  const translation = language.translations.find(t => t.locale === "fr") || language.translations[0];
+  const translation = language.translations.find((t: any) => t.locale === "fr") || language.translations[0];
   const levels = (translation?.levels as unknown as LevelData[]) || [];
 
   const breadcrumbs = [

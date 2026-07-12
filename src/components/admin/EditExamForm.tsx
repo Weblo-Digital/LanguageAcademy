@@ -50,14 +50,14 @@ export function EditExamForm({ exam }: EditExamFormProps) {
   const [strategy, setStrategy] = useState<string[]>(exam.strategy as string[] || []);
 
   // French Translations
-  const frTrans = exam.translations.find(t => t.locale === "fr") || { name: "", fullName: "", intro: "", guideTitle: "" };
+  const frTrans = exam.translations.find((t: any) => t.locale === "fr") || { name: "", fullName: "", intro: "", guideTitle: "" };
   const [frName, setFrName] = useState(frTrans.name);
   const [frFullName, setFrFullName] = useState(frTrans.fullName);
   const [frIntro, setFrIntro] = useState(frTrans.intro);
   const [frGuide, setFrGuide] = useState(frTrans.guideTitle || "");
 
   // English Translations
-  const enTrans = exam.translations.find(t => t.locale === "en") || { name: "", fullName: "", intro: "", guideTitle: "" };
+  const enTrans = exam.translations.find((t: any) => t.locale === "en") || { name: "", fullName: "", intro: "", guideTitle: "" };
   const [enName, setEnName] = useState(enTrans.name);
   const [enFullName, setEnFullName] = useState(enTrans.fullName);
   const [enIntro, setEnIntro] = useState(enTrans.intro);

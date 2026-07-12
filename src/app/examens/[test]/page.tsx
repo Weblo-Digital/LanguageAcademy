@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ test: str
   });
   
   if (!exam) return { title: "Examen non trouvé | Next Point Academy" };
-  const translation = exam.translations.find(t => t.locale === "fr") || exam.translations[0];
+  const translation = exam.translations.find((t: any) => t.locale === "fr") || exam.translations[0];
   
   return {
     title: `Préparation ${translation?.name || "Certification"} | Next Point Academy`,
@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: Promise<{ test: string 
     notFound();
   }
 
-  const translation = exam.translations.find(t => t.locale === "fr") || exam.translations[0];
+  const translation = exam.translations.find((t: any) => t.locale === "fr") || exam.translations[0];
   const sections = (exam.sections as unknown as ExamSection[]) || [];
   const strategy = (exam.strategy as unknown as string[]) || [];
 

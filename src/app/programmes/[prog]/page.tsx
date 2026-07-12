@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ prog: str
   });
   
   if (!program) return { title: "Programme non trouvé | Next Point Academy" };
-  const translation = program.translations.find(t => t.locale === "fr") || program.translations[0];
+  const translation = program.translations.find((t: any) => t.locale === "fr") || program.translations[0];
   
   return {
     title: `${translation?.name || "Programme"} | Next Point Academy`,
@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ prog: string 
     notFound();
   }
 
-  const translation = program.translations.find(t => t.locale === "fr") || program.translations[0];
+  const translation = program.translations.find((t: any) => t.locale === "fr") || program.translations[0];
   const modules = (program.modules as unknown as string[]) || [];
   const strategy = (program.strategy as unknown as string[]) || [];
 
