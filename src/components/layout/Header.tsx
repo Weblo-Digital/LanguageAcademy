@@ -90,7 +90,7 @@ export function Header() {
       {/* Main Navbar */}
       <div className={`w-full flex h-16 items-center justify-between px-6 lg:px-12 transition-all duration-300 border-b ${
         scrolled 
-          ? "bg-white/80 backdrop-blur-md border-slate-200/40 shadow-xs text-brand-navy" 
+          ? "bg-white border-slate-200/80 shadow-xs text-brand-navy" 
           : "bg-transparent border-transparent text-white"
       }`}>
         
@@ -99,7 +99,7 @@ export function Header() {
           <Link href="/" className="shrink-0 flex items-center">
             {/* Desktop Logo */}
             <Image 
-              src={scrolled ? "/images/brand/npa_logo_dark.svg" : "/images/brand/npa_logo_light.svg"} 
+              src={scrolled ? "/images/brand/NextPointAcademy_logo.svg" : "/images/brand/npa_logo_light.svg"} 
               alt="Next Point Academy" 
               width={220} 
               height={90} 
