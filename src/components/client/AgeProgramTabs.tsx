@@ -19,7 +19,7 @@ export function AgeProgramTabs() {
       <div className="max-w-7xl w-full mx-auto px-6 lg:px-12">
         
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#057A55]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#B88100]">
             {t.programsBadge}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-4">

@@ -350,7 +350,7 @@ export function Header() {
                 {/* Age brackets group */}
                 <div>
                   <h5 className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <Users className="size-4 text-[#057A55]" />
+                    <Users className="size-4 text-[#B88100]" />
                     {t.byAgeTitle}
                   </h5>
                   <ul className="space-y-2.5 text-xs text-slate-600 font-semibold">
@@ -364,7 +364,7 @@ export function Header() {
                 {/* Formats group */}
                 <div>
                   <h5 className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <BookOpen className="size-4 text-[#057A55]" />
+                    <BookOpen className="size-4 text-[#B88100]" />
                     {t.formatsTitle}
                   </h5>
                   <ul className="space-y-2.5 text-xs text-slate-600 font-semibold">
@@ -378,7 +378,7 @@ export function Header() {
                 {/* Professional tracks */}
                 <div>
                   <h5 className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <Briefcase className="size-4 text-[#057A55]" />
+                    <Briefcase className="size-4 text-[#B88100]" />
                     {t.proTitle}
                   </h5>
                   <ul className="space-y-2.5 text-xs text-slate-600 font-semibold">
@@ -392,13 +392,13 @@ export function Header() {
                 {/* Feature banner card */}
                 <div className="bg-brand-warm-white rounded-3xl p-5 border border-slate-100 flex flex-col justify-between">
                   <div>
-                    <span className="text-[9px] font-extrabold uppercase tracking-widest text-[#057A55] bg-emerald-50 px-2 py-0.5 rounded">{t.summerBannerBadge}</span>
+                    <span className="text-[9px] font-extrabold uppercase tracking-widest text-[#B88100] bg-emerald-50 px-2 py-0.5 rounded">{t.summerBannerBadge}</span>
                     <h6 className="text-sm font-bold text-brand-navy mt-2">{t.summerBannerTitle}</h6>
                     <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
                       {t.summerBannerDesc}
                     </p>
                   </div>
-                  <Link href="/camps-ete" className="text-[11px] font-bold text-[#057A55] flex items-center gap-1.5 hover:underline mt-4">
+                  <Link href="/camps-ete" className="text-[11px] font-bold text-[#B88100] flex items-center gap-1.5 hover:underline mt-4">
                     {t.summerBannerCTA} <ArrowRight className="size-3.5" />
                   </Link>
                 </div>
@@ -410,7 +410,7 @@ export function Header() {
               <div className="grid grid-cols-4 gap-8">
                 <div>
                   <h5 className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-4 flex items-center gap-1.5">
-                    <Award className="size-4 text-[#057A55]" />
+                    <Award className="size-4 text-[#B88100]" />
                     {t.englishTitle}
                   </h5>
                   <ul className="space-y-2 text-xs text-slate-600 font-semibold">
@@ -420,7 +420,7 @@ export function Header() {
                 </div>
                 <div>
                   <h5 className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-4 flex items-center gap-1.5">
-                    <Award className="size-4 text-[#057A55]" />
+                    <Award className="size-4 text-[#B88100]" />
                     {t.frenchTitle}
                   </h5>
                   <ul className="space-y-2 text-xs text-slate-600 font-semibold">
@@ -431,7 +431,7 @@ export function Header() {
                 </div>
                 <div>
                   <h5 className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-4 flex items-center gap-1.5">
-                    <Award className="size-4 text-[#057A55]" />
+                    <Award className="size-4 text-[#B88100]" />
                     {t.spanishTitle}
                   </h5>
                   <ul className="space-y-2 text-xs text-slate-600 font-semibold">
@@ -478,7 +478,7 @@ export function Header() {
                       {t.recruitmentDesc}
                     </p>
                   </div>
-                  <Link href="/contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#057A55] hover:text-[#057A55]/80 transition-colors">
+                  <Link href="/contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#B88100] hover:text-[#B88100]/80 transition-colors">
                     {t.recruitmentCTA} &rarr;
                   </Link>
                 </div>

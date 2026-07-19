@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: Promise<{ test: string 
             {/* Metadata Table details */}
             <div className="bg-brand-warm-white rounded-3xl p-8 border border-slate-100/80 text-left space-y-6">
               <h3 className="text-lg font-black text-brand-navy tracking-tight border-b border-slate-200 pb-3 flex items-center gap-2">
-                <FileText className="size-5 text-[#057A55]" /> {"Fiche Technique de l'Examen"}
+                <FileText className="size-5 text-[#B88100]" /> {"Fiche Technique de l'Examen"}
               </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-left">

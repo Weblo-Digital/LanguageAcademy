@@ -195,7 +195,7 @@ export default function HomePage() {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-12">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#057A55] bg-[#E6F4EA] px-3.5 py-2 rounded-full border border-[#A7F3D0]/30 inline-block">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B88100] bg-[#FFFBEB] px-3.5 py-2 rounded-full border border-[#FDE68A]/30 inline-block">
               <Translated fr={fr.whyBadge} en={en.whyBadge} />
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-4">
@@ -209,38 +209,38 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Users className="size-6 text-[#057A55]" />,
+                icon: <Users className="size-6 text-[#B88100]" />,
                 title: <Translated fr={fr.whyCard1Title} en={en.whyCard1Title} />,
                 desc: <Translated fr={fr.whyCard1Desc} en={en.whyCard1Desc} />
               },
               {
-                icon: <GraduationCap className="size-6 text-[#057A55]" />,
+                icon: <GraduationCap className="size-6 text-[#B88100]" />,
                 title: <Translated fr={fr.whyCard2Title} en={en.whyCard2Title} />,
                 desc: <Translated fr={fr.whyCard2Desc} en={en.whyCard2Desc} />
               },
               {
-                icon: <Award className="size-6 text-[#057A55]" />,
+                icon: <Award className="size-6 text-[#B88100]" />,
                 title: <Translated fr={fr.whyCard3Title} en={en.whyCard3Title} />,
                 desc: <Translated fr={fr.whyCard3Desc} en={en.whyCard3Desc} />
               },
               {
-                icon: <Clock className="size-6 text-[#057A55]" />,
+                icon: <Clock className="size-6 text-[#B88100]" />,
                 title: <Translated fr={fr.whyCard4Title} en={en.whyCard4Title} />,
                 desc: <Translated fr={fr.whyCard4Desc} en={en.whyCard4Desc} />
               },
               {
-                icon: <MapPin className="size-6 text-[#057A55]" />,
+                icon: <MapPin className="size-6 text-[#B88100]" />,
                 title: <Translated fr={fr.whyCard5Title} en={en.whyCard5Title} />,
                 desc: <Translated fr={fr.whyCard5Desc} en={en.whyCard5Desc} />
               },
               {
-                icon: <ShieldCheck className="size-6 text-[#057A55]" />,
+                icon: <ShieldCheck className="size-6 text-[#B88100]" />,
                 title: <Translated fr={fr.whyCard6Title} en={en.whyCard6Title} />,
                 desc: <Translated fr={fr.whyCard6Desc} en={en.whyCard6Desc} />
               }
             ].map((card, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-3xs transition-all duration-300 hover:shadow-md hover:border-[#057A55]/20 hover:-translate-y-1 text-left">
-                <div className="size-12 rounded-2xl bg-[#E6F4EA] flex items-center justify-center mb-6">
+              <div key={idx} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-3xs transition-all duration-300 hover:shadow-md hover:border-[#B88100]/20 hover:-translate-y-1 text-left">
+                <div className="size-12 rounded-2xl bg-[#FFFBEB] flex items-center justify-center mb-6">
                   {card.icon}
                 </div>
                 <h3 className="text-lg font-bold text-brand-navy tracking-tight">{card.title}</h3>
@@ -256,7 +256,7 @@ export default function HomePage() {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-5 text-left space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#057A55] bg-[#E6F4EA] px-3.5 py-2 rounded-full border border-[#A7F3D0]/30 inline-block">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B88100] bg-[#FFFBEB] px-3.5 py-2 rounded-full border border-[#FDE68A]/30 inline-block">
               <Translated fr={fr.communityBadge} en={en.communityBadge} />
             </span>
             <h2 className="text-4xl lg:text-5xl font-black text-brand-navy leading-tight tracking-tight">
@@ -318,7 +318,7 @@ export default function HomePage() {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-12">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#057A55] bg-[#E6F4EA] px-3.5 py-2 rounded-full border border-[#A7F3D0]/30 inline-block">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B88100] bg-[#FFFBEB] px-3.5 py-2 rounded-full border border-[#FDE68A]/30 inline-block">
               <Translated fr={fr.languageBadge} en={en.languageBadge} />
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-4">
@@ -380,7 +380,7 @@ export default function HomePage() {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6 text-center lg:text-left">
             <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#057A55] bg-[#E6F4EA] px-3 py-1.5 rounded-full border border-[#A7F3D0]/30">
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#B88100] bg-[#FFFBEB] px-3 py-1.5 rounded-full border border-[#FDE68A]/30">
                 <Translated fr={fr.academicBadge} en={en.academicBadge} />
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-4 relative w-fit mx-auto lg:mx-0 pb-2">
@@ -495,7 +495,7 @@ export default function HomePage() {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-12">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#057A55] bg-[#E6F4EA] px-3.5 py-2 rounded-full border border-[#A7F3D0]/30 inline-block">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#B88100] bg-[#FFFBEB] px-3.5 py-2 rounded-full border border-[#FDE68A]/30 inline-block">
               {languageTranslationsFR_EN("Contact & Campus", "Contact & Campuses")}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-4">
@@ -507,7 +507,7 @@ export default function HomePage() {
             {/* Card 1: Contact Information */}
             <div className="bg-brand-warm-white p-8 sm:p-10 rounded-3xl border border-slate-100 text-left flex flex-col justify-between space-y-6">
               <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest bg-brand-emerald/10 text-[#057A55] px-2.5 py-1 rounded">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest bg-brand-emerald/10 text-[#B88100] px-2.5 py-1 rounded">
                   {languageTranslationsFR_EN("Coordonnées", "Get In Touch")}
                 </span>
                 <h3 className="text-xl font-bold text-brand-navy mt-4">
@@ -523,7 +523,7 @@ export default function HomePage() {
 
               <div className="space-y-4 text-xs text-slate-600 font-semibold">
                 <div className="flex items-start gap-3">
-                  <MapPin className="size-5 text-[#057A55] shrink-0 mt-0.5" />
+                  <MapPin className="size-5 text-[#B88100] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-brand-navy">
                       {languageTranslationsFR_EN("Notre Adresse", "Our Address")}
@@ -533,7 +533,7 @@ export default function HomePage() {
                 </div>
                 
                 <div className="flex items-start gap-3">
-                  <Phone className="size-5 text-[#057A55] shrink-0 mt-0.5" />
+                  <Phone className="size-5 text-[#B88100] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-brand-navy">
                       {languageTranslationsFR_EN("Téléphone / WhatsApp", "Phone / WhatsApp")}
@@ -545,7 +545,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="size-5 text-[#057A55] shrink-0 mt-0.5" />
+                  <Mail className="size-5 text-[#B88100] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-brand-navy">Email</p>
                     <p className="text-slate-500 mt-0.5">
@@ -555,7 +555,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="size-5 text-[#057A55] shrink-0 mt-0.5" />
+                  <Clock className="size-5 text-[#B88100] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-brand-navy">
                       {languageTranslationsFR_EN("Horaires d'ouverture", "Opening Hours")}
@@ -591,7 +591,7 @@ export default function HomePage() {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 gap-4">
             <div className="text-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#057A55]"><Translated fr={fr.blogBadge} en={en.blogBadge} /></span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#B88100]"><Translated fr={fr.blogBadge} en={en.blogBadge} /></span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-4">
                 <Translated fr={fr.blogTitle} en={en.blogTitle} />
               </h2>
@@ -624,7 +624,7 @@ export default function HomePage() {
                 date: languageTranslationsFR_EN("1 Mars 2026", "March 01, 2026")
               }
             ].map((post, idx) => (
-              <div key={idx} className="bg-white rounded-3xl border border-slate-100 overflow-hidden hover:border-[#057A55]/20 transition-all duration-300 text-left flex flex-col justify-between">
+              <div key={idx} className="bg-white rounded-3xl border border-slate-100 overflow-hidden hover:border-[#B88100]/20 transition-all duration-300 text-left flex flex-col justify-between">
                 <div className="relative h-[200px] w-full">
                   <Image src={post.image} alt="Blog post cover" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                   <div className="absolute top-4 left-4 bg-brand-navy text-white font-bold text-[9px] uppercase tracking-wider px-2.5 py-0.5 rounded">
@@ -636,7 +636,7 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-brand-navy leading-snug tracking-tight">
                     {post.title}
                   </h4>
-                  <Link href="#blog" className="text-xs font-bold text-[#057A55] hover:underline inline-flex items-center gap-1.5">
+                  <Link href="#blog" className="text-xs font-bold text-[#B88100] hover:underline inline-flex items-center gap-1.5">
                     <Translated fr={fr.blogReadMore} en={en.blogReadMore} /> <ArrowUpRight className="size-3.5" />
                   </Link>
                 </div>

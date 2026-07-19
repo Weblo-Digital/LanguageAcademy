@@ -85,7 +85,7 @@ export default function SummerCampsPage() {
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-[#E6F4EA] border border-[#A7F3D0]/30 flex items-center justify-center text-[#057A55] shrink-0 mt-0.5">
+              <div className="size-10 rounded-xl bg-[#FFFBEB] border border-[#FDE68A]/30 flex items-center justify-center text-[#B88100] shrink-0 mt-0.5">
                 <Calendar className="size-5" />
               </div>
               <div className="text-left">
@@ -95,7 +95,7 @@ export default function SummerCampsPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-[#E6F4EA] border border-[#A7F3D0]/30 flex items-center justify-center text-[#057A55] shrink-0 mt-0.5">
+              <div className="size-10 rounded-xl bg-[#FFFBEB] border border-[#FDE68A]/30 flex items-center justify-center text-[#B88100] shrink-0 mt-0.5">
                 <Clock className="size-5" />
               </div>
               <div className="text-left">
@@ -105,7 +105,7 @@ export default function SummerCampsPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-[#E6F4EA] border border-[#A7F3D0]/30 flex items-center justify-center text-[#057A55] shrink-0 mt-0.5">
+              <div className="size-10 rounded-xl bg-[#FFFBEB] border border-[#FDE68A]/30 flex items-center justify-center text-[#B88100] shrink-0 mt-0.5">
                 <Users className="size-5" />
               </div>
               <div className="text-left">
@@ -115,7 +115,7 @@ export default function SummerCampsPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-[#E6F4EA] border border-[#A7F3D0]/30 flex items-center justify-center text-[#057A55] shrink-0 mt-0.5">
+              <div className="size-10 rounded-xl bg-[#FFFBEB] border border-[#FDE68A]/30 flex items-center justify-center text-[#B88100] shrink-0 mt-0.5">
                 <MapPin className="size-5" />
               </div>
               <div className="text-left">
