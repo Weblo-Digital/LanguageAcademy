@@ -95,7 +95,7 @@ export function Header() {
           <Link href="/" className="shrink-0 flex items-center">
             {/* Desktop Logo */}
             <Image 
-              src={scrolled ? "/images/brand/npa_logo_dark.svg" : "/images/brand/npa_logo_light.svg"} 
+              src={scrolled ? "/images/brand/NextPointAcademy_logo.svg" : "/images/brand/npa_logo_light.svg"} 
               alt="Next Point Academy" 
               width={180} 
               height={74} 
